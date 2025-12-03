@@ -11,9 +11,11 @@ keyboard = telebot.types.ReplyKeyboardMarkup(resize_keyboard=True)
 
 button1 = telebot.types.KeyboardButton(text="yo")
 button2 = telebot.types.KeyboardButton(text="sup")
-keyboard.add(button1)
-keyboard.add(button2)
-keyboard.add('yo', 'sup')
+button3 = telebot.types.KeyboardButton(text="bro")
+button4 = telebot.types.KeyboardButton(text="fr")
+button5 = telebot.types.KeyboardButton(text="no way")
+button6 = telebot.types.KeyboardButton(text="gang")
+keyboard.add('yo', 'sup', 'bro', 'fr', 'no way', 'gang')
 
 
 
@@ -35,18 +37,42 @@ def send_welcome(message: Message):
 @bot.message_handler(func=lambda message: True)
 def text_message(message: Message):
     global state
-    if state == 1 and message.text == 'Left':
+    if state == 1 and message.text == 'yo':
         bot.send_message(
             message.chat.id,
             'u went left to room 2'
         )
         state = 2
-    elif state == 1 and message.text == 'Right':
+    elif state == 1 and message.text == 'sup':
         bot.send_message(
             message.chat.id,
             'u went right to room 3'
         )
         state = 3
+    elif state == 2 and message.text == 'bro':
+        bot.send_message(
+            message.chat.id,
+            'u went right to room 4'
+        )
+        state = 4
+    elif state == 3 and message.text == 'gang':
+        bot.send_message(
+            message.chat.id,
+            'u went right to room 6'
+        )
+        state = 6
+    elif state == 2 and message.text == 'fr':
+        bot.send_message(
+            message.chat.id,
+            'u went right to room 5'
+        )
+        state = 5
+    elif state == 3 and message.text == 'no way':
+        bot.send_message(
+            message.chat.id,
+            'u went right to room 5'
+        )
+        state = 5
     else:
         bot.send_message(
             message.chat.id,
